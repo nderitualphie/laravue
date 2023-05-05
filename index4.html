@@ -4,24 +4,40 @@
 <head>
     <script src="https://unpkg.com/vue@3"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-
+<style>
+.is-loading {
+  width: 150px; /* control the size */
+  aspect-ratio: 1;
+  display: grid;
+  color: transparent;
+  mask: conic-gradient(from 22deg, #0003, #000);
+  animation: load 1s steps(8) infinite;
+}
+.is-loading,
+.is-loading:before {
+  --_g: linear-gradient(#17177c 0 0) 50%; /* update the color here */
+  background: 
+    var(--_g)/34% 8%  space no-repeat,
+    var(--_g)/8%  34% no-repeat space;
+}
+.is-loading:before {
+  content: "";
+  transform: rotate(45deg);
+}
+@keyframes load {
+  to { transform: rotate(1turn); }
+}
+</style>
 </head>
 
 <body class="h-full grid place-items-center">
     <div id="app">
-       <app-button>submit</app-button>
-       <div>
-        <app-button>undo</app-button>
-       </div>
+       <app-button :processing = "true">submit</app-button>
+       <div></div><div></div><div>
     </div>
     <script type ="module">
-        import AppButton from "./components/AppButton.js"
-        let app = {
-components:{
-    'app-button': AppButton,
-}
-        }
-        Vue.createApp(app
+    import App from "./components/App.js"   
+        Vue.createApp(App
         ).mount('#app')
     </script>
 </body>
