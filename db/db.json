@@ -1,0 +1,8 @@
+ {
+    "assignments": [
+    { "name": "finish project", "complete": "false","tag": "math" },
+    { "name": "Read a book", "complete": "false","tag": "science" },
+    { "name": "submit project", "complete": "false","tag":"math" },
+    { "name": "Start coding", "complete": "true","tag":"science" }
+]
+}
