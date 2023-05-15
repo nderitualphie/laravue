@@ -6,17 +6,19 @@ export default{
         AssignmentCreate
     },
     template: ` 
-   <section class ="space-y-6 ">
-   <assignments-list :assignments ="filters.inProgress" title ="in Progress"></assignments-list>
-   <assignments-list :assignments ="filters.completed" title ="completed Assignments"></assignments-list>
-   <assignment-create @add='add'></assignment-create>
+   <section class ="flex gap-8">
+   <assignments-list :assignments ="filters.inProgress" title ="in Progress">
+   <assignment-create @add='add'/>
+   </assignments-list>
+   <assignments-list v-if="showCompleted"
+   :assignments ="filters.completed" can-toggle @toggle="showCompleted = !showCompleted" title ="Completed"></assignments-list>
+   
    </section>
    
     `, data() {
         return {
-            assignments: [
-                
-            ],   
+            assignments: [],   
+            showCompleted:true
         }
     }, computed: {
          filters(){
